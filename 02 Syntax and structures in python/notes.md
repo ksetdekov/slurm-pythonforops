@@ -10,3 +10,7 @@
 
 * бывают целые и вещественные и комплексные, атомарный тип данных в python
 * числа - immutable
+
+## strings
+
+синтаксис форматирования в строках <https://docs.python.org/3.9/library/string.html#formatstrings>
