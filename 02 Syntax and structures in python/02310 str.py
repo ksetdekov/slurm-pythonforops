@@ -7,3 +7,8 @@ if __name__ == "__main__":
     secret_symbol = chr(int(secret_symbol_first_part[3:7]) + int(secret_symbol_second_part[1::2]))
     result = f"Меня зовут {name.strip(' -').capitalize()}, я {job.lower()}, пишите мне на {email.replace('@' , ' at ')}{secret_symbol}"
     print(result)
+    #2.3.15
+    instruction_name = "Disaster recovery plan"
+    print(instruction_name[9:-5])
+    print(instruction_name[9:])
+    print(instruction_name[:8])
