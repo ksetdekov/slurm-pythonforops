@@ -62,3 +62,12 @@ print('0123456'[:6:3])
 
 * immutable - int, float, bool, str, tuples
 * mutable - list, dict, set
+
+## условные операторы
+
+```python
+if xxx > y:
+  print('do')
+else:
+  print('else')
+```
