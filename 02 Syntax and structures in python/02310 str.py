@@ -12,3 +12,8 @@ if __name__ == "__main__":
     print(instruction_name[9:-5])
     print(instruction_name[9:])
     print(instruction_name[:8])
+
+    my_name = "Хикматилло"
+    print(ord(my_name[0]))  # 1061
+    is_my_name_long = my_name > 8
+    print(is_my_name_long)
