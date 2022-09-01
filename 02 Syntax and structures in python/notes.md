@@ -53,3 +53,12 @@ print('0123456'[:6:3])
 ## logical types
 
 операторы: или, и
+
+## tuples
+
+неизменяемый тип данных, очень похож на строки
+
+## data types
+
+* immutable - int, float, bool, str, tuples
+* mutable - list, dict, set
