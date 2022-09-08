@@ -196,3 +196,30 @@ if __name__ == '__main__':
 
 Process finished with exit code 0
 ```
+
+## global and local vars
+
+1. local
+2. enclosed - nonlocal variable
+3. global
+4. built-in
+
+```python
+variable = "global"
+
+def main():
+    global variable
+    variable = "enclosed"
+
+    def sub_main():
+        # nonlocal variable
+        # variable = "local"
+        print(variable)
+
+    sub_main()
+    print(variable)
+
+if __name__ == '__main__':
+    main()
+    print(variable)
+```
