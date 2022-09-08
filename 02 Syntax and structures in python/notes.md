@@ -136,3 +136,63 @@ else:
 1. Не дубливровать код.
 2. Централизованно им управлять
 3. Создавать свои модули.
+
+### принцип единственной ответственности
+
+* функция делает что-то одно
+* передавать не больше 5 аргументов за раз
+* наименовать как глагол
+
+если работаем со списками как аргументы в функциях, чтобы не начать менять их - лучше делать такую конструкцию
+
+```python
+def work_with_mutables(my_list=None):
+    if my_list is None:
+        my_list = []
+    my_list.append(3)
+    print(my_list)
+
+def main():
+    for _ in range(6):
+        work_with_mutables()
+
+if __name__ == '__main__':
+    main()
+```
+
+```bash
+[3]
+[3]
+[3]
+[3]
+[3]
+[3]
+
+Process finished with exit code 0
+```
+
+а вот так делать не нужно
+
+```python
+def work_with_mutables(my_list=[]):
+    my_list.append(3)
+    print(my_list)
+
+def main():
+    for _ in range(6):
+        work_with_mutables()
+
+if __name__ == '__main__':
+    main()
+```
+
+```bash
+[3]
+[3, 3]
+[3, 3, 3]
+[3, 3, 3, 3]
+[3, 3, 3, 3, 3]
+[3, 3, 3, 3, 3, 3]
+
+Process finished with exit code 0
+```
