@@ -242,3 +242,6 @@ list можно говорить про строку
 break \< num \>  
 
 можно писать help
+
+методичка
+<https://docs.google.com/presentation/d/1bvLH_ljVE_vQKYCrZ5Sww8GXMsXZU5ka/edit#slide=id.p1>
