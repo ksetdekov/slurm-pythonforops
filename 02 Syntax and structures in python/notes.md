@@ -223,3 +223,22 @@ if __name__ == '__main__':
     main()
     print(variable)
 ```
+
+## try except
+
+* try
+* except
+* finally
+
+PDB debugger
+
+```bash
+python3 -m pdb main.py
+```
+
+можно ходить по программе через step
+list можно говорить про строку
+
+break \< num \>  
+
+можно писать help
