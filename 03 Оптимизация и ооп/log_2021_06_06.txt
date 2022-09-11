@@ -1,0 +1,4 @@
+INFO: User 23 has speakers rights on course 1
+INFO: User 23 removed description from course 1
+DEBUG: task 'Remove description' (23123112) was created with params (course: 1, created_by: 23)
+ERROR: task 'Remove description' (231231112) failed (course: 1, created_by: 23)
