@@ -26,6 +26,7 @@ def modify_rps_list_with_input_data(input_str, rps_list):
     break_command = None
     if input_str is None:
         break_command = True
+        return rps_list, break_command
     elif input_str.isdigit():
         rps_list.append(int(input_str))
     elif ";" in input_str:
@@ -36,31 +37,37 @@ def modify_rps_list_with_input_data(input_str, rps_list):
             f"делаем срез от {split_option[0]} до {split_option[1]} элемента")
         rps_list = rps_list[split_option[0]:split_option[1]]
         break_command = True
+        return rps_list, break_command
     else:
         print('validation not passed')
 
     return rps_list, break_command
 
 
-def calculate_hist_and_mean(list_of_values):
-    """расчет гистограммы и среднего для списка
+def calculate_hist(list_of_values):
+    """расчет гистограммы для списка
 
     :param list_of_values: список чисел
     :type list_of_values: list
-    :return: значение среднего и словарь частот
-    :rtype: (float, dict)
+    :return: словарь частот
+    :rtype: dict
     """
     hist = {}
-    sum_of_rps = 0
     for rps in list_of_values:
-        count = hist.get(rps)
-        if count is None:
-            hist[rps] = 0
-        hist[rps] += 1
-        sum_of_rps += rps
-    mean = sum_of_rps / len(list_of_values)
-    return mean, hist
+        hist[rps] = hist.get(rps, 0) + 1
+    return hist
 
+def calculate_mean(list_of_values):
+    """расчет среднего для списка
+
+    :param list_of_values: список чисел
+    :type list_of_values: list
+    :return: значение среднего
+    :rtype: float
+    """
+    sum_of_rps = sum(list_of_values)
+    mean = sum_of_rps / len(list_of_values)
+    return mean
 
 def print_hist_data(hist_to_print):
     """сортировка словаря с гистограммой по частоте и распечатка его
@@ -94,7 +101,8 @@ def calculate_hist_mean_median(list_of_ints):
     :return: tuple из среднего, гисограммы и медианы
     :rtype: (float, float, float)
     """    
-    mean, hist = calculate_hist_and_mean(list_of_ints)
+    mean = calculate_mean(list_of_ints)
+    hist = calculate_hist(list_of_ints)
     median = calculate_median(list_of_ints)
     return mean, hist, median
 
@@ -110,10 +118,10 @@ def calculate_direction(mean, median):
     :rtype: str
     """
     direction = mean / median - 1
-    if direction > 0.3:
-        directions_result = "Снижения"
-    elif direction < -0.3:
+    if direction > 0.25:
         directions_result = "Скачки"
+    elif direction < -0.25:
+        directions_result = "Снижения"
     else:
         directions_result = "Стабильная"
     return directions_result
@@ -126,14 +134,14 @@ if __name__ == '__main__':
                   '6381', 8409, '5177', 17357, '10814', 6679, 12241, '6556', 12913, 16454, '17589', 5292, '13639',
                   '7335', '11531', '14346', 7493, 15850, '12791', 11288)
 
-    corrected_rps_values = [int(value) for value in rps_values]
+    corrected_rps_values = list(map(int, rps_values))
 
     while True:
         # read input
         input_data = input_rps()
         # procecc input
         rps_values, break_option = modify_rps_list_with_input_data(
-            input_str=input_data, rps_list=corrected_rps_values)
+            input_data, corrected_rps_values)
         if break_option is not None:
             break
 
