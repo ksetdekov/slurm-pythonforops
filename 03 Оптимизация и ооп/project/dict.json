@@ -1,0 +1,810 @@
+{
+    "drive revolutionary infrastructures": {
+        "168V": {
+            "CPU": {
+                "mean": 48.475,
+                "mediana": 33.5,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 48.125,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 50.44,
+                "mediana": 55.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "2563 ZS": {
+            "CPU": {
+                "mean": 58.01,
+                "mediana": 88.5,
+                "usage_type": "Drops",
+                "intensity": "High"
+            },
+            "NetFlow": {
+                "mean": 59.125,
+                "mediana": 90.5,
+                "usage_type": "Drops",
+                "intensity": "Overwhelming"
+            },
+            "RAM": {
+                "mean": 49.19,
+                "mediana": 44.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "2S O9806": {
+            "CPU": {
+                "mean": 51.705,
+                "mediana": 70.0,
+                "usage_type": "Drops",
+                "intensity": "High"
+            },
+            "NetFlow": {
+                "mean": 51.34,
+                "mediana": 63.0,
+                "usage_type": "Stable",
+                "intensity": "High"
+            },
+            "RAM": {
+                "mean": 51.255,
+                "mediana": 66.5,
+                "usage_type": "Stable",
+                "intensity": "High"
+            }
+        },
+        "4023 TM": {
+            "CPU": {
+                "mean": 54.57,
+                "mediana": 76.5,
+                "usage_type": "Drops",
+                "intensity": "High"
+            },
+            "NetFlow": {
+                "mean": 46.825,
+                "mediana": 39.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 50.12,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "420-809": {
+            "CPU": {
+                "mean": 45.59,
+                "mediana": 20.5,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 48.3,
+                "mediana": 47.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 52.07,
+                "mediana": 55.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "426 CCJ": {
+            "CPU": {
+                "mean": 47.0,
+                "mediana": 34.5,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 46.985,
+                "mediana": 34.5,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 53.15,
+                "mediana": 72.5,
+                "usage_type": "Drops",
+                "intensity": "High"
+            }
+        },
+        "7VR 831": {
+            "CPU": {
+                "mean": 48.91,
+                "mediana": 54.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 45.56,
+                "mediana": 30.5,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 42.515,
+                "mediana": 15.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            }
+        },
+        "DVM-4870": {
+            "CPU": {
+                "mean": 49.57,
+                "mediana": 55.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 48.455,
+                "mediana": 38.5,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.195,
+                "mediana": 31.0,
+                "usage_type": "Spikes",
+                "intensity": "Medium"
+            }
+        },
+        "L 139693": {
+            "CPU": {
+                "mean": 48.235,
+                "mediana": 42.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.425,
+                "mediana": 55.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 53.785,
+                "mediana": 75.0,
+                "usage_type": "Drops",
+                "intensity": "High"
+            }
+        },
+        "NBX-4230": {
+            "CPU": {
+                "mean": 44.75,
+                "mediana": 21.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 54.24,
+                "mediana": 68.5,
+                "usage_type": "Stable",
+                "intensity": "High"
+            },
+            "RAM": {
+                "mean": 45.405,
+                "mediana": 23.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            }
+        }
+    },
+    "envisioneer rich mindshare": {
+        "0080": {
+            "CPU": {
+                "mean": 49.69,
+                "mediana": 51.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 50.175,
+                "mediana": 52.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 48.735,
+                "mediana": 51.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "0VG N83": {
+            "CPU": {
+                "mean": 48.635,
+                "mediana": 46.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 47.88,
+                "mediana": 44.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 52.785,
+                "mediana": 56.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "6690": {
+            "CPU": {
+                "mean": 52.505,
+                "mediana": 52.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 53.715,
+                "mediana": 58.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 49.215,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "6WQ 834": {
+            "CPU": {
+                "mean": 49.075,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.25,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.75,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "7-6317O": {
+            "CPU": {
+                "mean": 47.13,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 52.56,
+                "mediana": 55.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 46.16,
+                "mediana": 43.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "7-8353O": {
+            "CPU": {
+                "mean": 50.93,
+                "mediana": 48.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 50.435,
+                "mediana": 53.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 44.52,
+                "mediana": 40.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "740H6": {
+            "CPU": {
+                "mean": 50.105,
+                "mediana": 49.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.04,
+                "mediana": 45.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 51.08,
+                "mediana": 49.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "OIX-3915": {
+            "CPU": {
+                "mean": 50.43,
+                "mediana": 51.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 52.57,
+                "mediana": 53.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 51.42,
+                "mediana": 51.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "SZY1417": {
+            "CPU": {
+                "mean": 51.645,
+                "mediana": 53.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 48.025,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.605,
+                "mediana": 45.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "UDF-415": {
+            "CPU": {
+                "mean": 50.865,
+                "mediana": 52.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 53.67,
+                "mediana": 55.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 46.895,
+                "mediana": 46.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        }
+    },
+    "implement open-source bandwidth": {
+        "3A 6Y8GRR": {
+            "CPU": {
+                "mean": 49.385,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.29,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.45,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "704 PXA": {
+            "CPU": {
+                "mean": 48.56,
+                "mediana": 48.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 48.26,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 50.145,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "7SL 489": {
+            "CPU": {
+                "mean": 49.815,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.365,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 49.55,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "81-V286": {
+            "CPU": {
+                "mean": 50.965,
+                "mediana": 51.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 47.815,
+                "mediana": 48.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.935,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "8FL51": {
+            "CPU": {
+                "mean": 48.86,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.75,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.805,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "AMZ 828": {
+            "CPU": {
+                "mean": 50.505,
+                "mediana": 51.5,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.47,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 50.4,
+                "mediana": 51.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "GNB-759": {
+            "CPU": {
+                "mean": 49.66,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.63,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 47.755,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "GQN-7565": {
+            "CPU": {
+                "mean": 49.43,
+                "mediana": 50.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 48.525,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 48.915,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "SBP 366": {
+            "CPU": {
+                "mean": 49.11,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.815,
+                "mediana": 51.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 48.085,
+                "mediana": 48.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        },
+        "TSS6228": {
+            "CPU": {
+                "mean": 49.04,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "NetFlow": {
+                "mean": 49.015,
+                "mediana": 49.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            },
+            "RAM": {
+                "mean": 48.405,
+                "mediana": 47.0,
+                "usage_type": "Stable",
+                "intensity": "Medium"
+            }
+        }
+    },
+    "strategize world-class web services": {
+        "30N A62": {
+            "CPU": {
+                "mean": 25.88,
+                "mediana": 23.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 25.23,
+                "mediana": 22.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 24.97,
+                "mediana": 21.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "32A 892": {
+            "CPU": {
+                "mean": 26.875,
+                "mediana": 21.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 25.025,
+                "mediana": 19.5,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 25.82,
+                "mediana": 23.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "43-AY41": {
+            "CPU": {
+                "mean": 22.955,
+                "mediana": 18.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 25.805,
+                "mediana": 21.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 23.64,
+                "mediana": 19.5,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "840110": {
+            "CPU": {
+                "mean": 23.035,
+                "mediana": 19.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 24.055,
+                "mediana": 20.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 24.75,
+                "mediana": 19.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            }
+        },
+        "D56-AJM": {
+            "CPU": {
+                "mean": 25.09,
+                "mediana": 22.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 25.35,
+                "mediana": 22.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 24.745,
+                "mediana": 21.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "F41-22L": {
+            "CPU": {
+                "mean": 23.96,
+                "mediana": 19.5,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 24.465,
+                "mediana": 20.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 24.545,
+                "mediana": 20.5,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "MID 483": {
+            "CPU": {
+                "mean": 24.76,
+                "mediana": 19.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 26.3,
+                "mediana": 21.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 24.195,
+                "mediana": 19.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            }
+        },
+        "QF 44757": {
+            "CPU": {
+                "mean": 24.14,
+                "mediana": 20.5,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 23.455,
+                "mediana": 18.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 23.935,
+                "mediana": 17.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            }
+        },
+        "XFO8683": {
+            "CPU": {
+                "mean": 26.23,
+                "mediana": 22.5,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 25.705,
+                "mediana": 22.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 25.29,
+                "mediana": 21.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        },
+        "ZWQ-7380": {
+            "CPU": {
+                "mean": 25.04,
+                "mediana": 18.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "NetFlow": {
+                "mean": 24.06,
+                "mediana": 19.0,
+                "usage_type": "Spikes",
+                "intensity": "Low"
+            },
+            "RAM": {
+                "mean": 23.385,
+                "mediana": 19.0,
+                "usage_type": "Stable",
+                "intensity": "Low"
+            }
+        }
+    }
+}
