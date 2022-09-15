@@ -33,8 +33,7 @@ def main():
         print(
             f'Было осуществлено обращение к ресурсу при помощи прокси "proxyhost{candidate}.slurm.io"')
         proxys_que.appendleft(candidate)
-    else:
-        print(f'числ оставшихся в списке прокси {len(proxys_que)}')
+    print(f'числ оставшихся в списке прокси {len(proxys_que)}')
 
 
 if __name__ == '__main__':
