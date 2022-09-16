@@ -24,3 +24,17 @@
 ## Декоратор
 
 * что-то что до и после вызова функции срабатывает
+* getter (accessor)
+
+```python
+@property
+def name(self):
+        return self.__name
+```
+
+* setter (mutator)
+
+```python
+@name.setter
+def name(self, new_value):
+```
