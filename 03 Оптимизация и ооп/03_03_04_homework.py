@@ -38,7 +38,7 @@ def modify_rps_list_with_input_data(input_str, rps_list):
     elif ";" in input_str:
         rps_list.extend(map(int, input_str.split(";")))
     elif "," in input_str:
-        split_option = list(map(int, input_str.split(",")))
+        split_option = list(map(int, input_str.strip("][").split(",")))
         print(
             f"делаем срез от {split_option[0]} до {split_option[1]} элемента")
         rps_list = rps_list[split_option[0]:split_option[1]]
@@ -58,9 +58,7 @@ def calculate_hist(list_of_values):
     :return: словарь частот
     :rtype: dict
     """
-    hist = Counter()
-    for rps in list_of_values:
-        hist[rps] += 1
+    hist = Counter(list_of_values)
     return hist
 
 def calculate_mean(list_of_values):
@@ -93,6 +91,7 @@ def calculate_median(list_of_values):
     :return: значение медианы
     :rtype: float
     """    
+    list_of_values.sort()
     quotient, remainder = divmod(len(list_of_values), 2)
     median = list_of_values[quotient] if remainder else sum(
         list_of_values[quotient - 1:quotient + 1]) / 2
@@ -151,13 +150,12 @@ if __name__ == '__main__':
         if break_option is not None:
             break
 
-    corrected_rps_values.sort()
-    print("вот список упорядоченных rps")
-    print(corrected_rps_values)
+    print("вот список rps")
+    print(rps_values)
 
     # сбор информации по частоте, среднему и медиане
     mean_rps, rps_hist, median_rps = calculate_hist_mean_median(
-        corrected_rps_values)
+        rps_values)
 
     # сортировка частот и вывод частот
     print("вот частота значений rps")
