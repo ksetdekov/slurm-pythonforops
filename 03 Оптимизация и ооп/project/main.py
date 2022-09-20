@@ -2,6 +2,7 @@ import json
 import pandas as pd
 import os
 import logging
+
 # running
 # $ curl localhost:21122/monitoring/infrastructure/using/summary/1 | python main.py
 TEST_ON_TXT = False
@@ -10,7 +11,7 @@ if TEST_ON_TXT:
     logging.info("Тестовый режим - работа с файлом test.txt")
 
 
-def createDictFromPandas(df):
+def create_dict_from_pandas(df):
     """рекурсивная функция для создания словаря в нужном формате
 
     :param df: df с мульри индексом
@@ -18,12 +19,12 @@ def createDictFromPandas(df):
     :return: словарь с рекурсивными ключами
     :rtype: dict
     """
-    if (df.index.nlevels == 1):
+    if df.index.nlevels == 1:
         return df.to_dict(orient='index')
     dict_f = {}
     for level in df.index.levels[0]:
-        if (level in df.index):
-            dict_f[level] = createDictFromPandas(df.xs((level)))
+        if level in df.index:
+            dict_f[level] = create_dict_from_pandas(df.xs(level))
     return dict_f
 
 
@@ -83,7 +84,7 @@ def get_decision(intensity, usage_type):
     return decision
 
 
-def metric_estimator(row):
+def add_aggregates_to_row(row):
     """функция для записи расчитанных метрик в колонки
 
     :param row: строка датафрейма
@@ -107,7 +108,7 @@ def calculate_aggregates(df):
     """
     df_transformed = df.groupby(level=[0, 1, 2]).agg(['mean', 'median'])
     df_transformed.columns = ['mean', 'mediana']
-    df_transformed = df_transformed.apply(metric_estimator, axis=1)
+    df_transformed = df_transformed.apply(add_aggregates_to_row, axis=1)
     return df_transformed
 
 
@@ -119,6 +120,8 @@ def save_to_md(df_to_save, filename):
     :param filename: путь для сохранения
     :type filename: str
     """
+    logging.info(
+        f"сохраняем отчеты для этих команд :{', '.join(list(df_to_save.index.get_level_values(0).unique()))}")
     with open(filename, "w") as markdown_results:
         markdown_results.write("# Отчет по ресурсам по командам")
         for team_name in df_to_save.index.get_level_values(0).unique():
@@ -131,32 +134,44 @@ def save_to_md(df_to_save, filename):
         markdown_results.write("\n")
 
 
-def main():
-    final_dict = {}
+def get_raw_input_data():
     if TEST_ON_TXT:
         logging.info("считываем данные из файла")
         logging.info(
             f"мы в директории с этими файлами {os.listdir(os.curdir)}")
         with open('test.txt', 'r') as file:
-            a = file.read()
+            raw_input_string = file.read()
         logging.info("закончили читать файл")
     else:
         logging.info("получаем информацию с потока input")
-        a = input()
+        raw_input_string = input()
+    return raw_input_string
+
+
+def parse_string_to_dict(raw_input_string):
     logging.info("начали парсинг")
-    teams = a.split("$")
-    for team in teams:
+    final_dict = {}
+    for team in raw_input_string.split("$"):
         # 4 teams
         team_name, resources = team.split("|")
         list_of__resources = resources.split(";")
         for row in list_of__resources:
             # (SZY1417,CPU,2022-09-03 14:44:28,7)
             res_name, metric, time, value = row.strip(")(").split(',')
-            value = int(value)
-            final_dict[(team_name, res_name, metric, time)] = value
-
-    # получаем из словаря мультииндекс и создаем df из исходных данных
+            final_dict[(team_name, res_name, metric, time)] = int(value)
     logging.info("закончили парсинг")
+    return final_dict
+
+
+def write_dict_to_disk(dictionary_required, dict_location="dict.json"):
+    with open(dict_location, "w") as json_output_file:
+        json_output_file.write(json.dumps(dictionary_required, indent=4))
+
+
+def main():
+    raw_input_string = get_raw_input_data()
+    final_dict = parse_string_to_dict(raw_input_string)
+    # получаем из словаря мультииндекс и создаем df из исходных данных
     index_complex = pd.MultiIndex.from_tuples(
         final_dict.keys(), names=["team", "resource", "metric", "time"])
     result_df = pd.DataFrame(
@@ -165,19 +180,14 @@ def main():
     aggregated_df = calculate_aggregates(result_df)
 
     # готов словарь
-    dictionary_required = createDictFromPandas(
-        aggregated_df.drop(columns="decision"))
+    dictionary_required = create_dict_from_pandas(aggregated_df.drop(columns="decision"))
 
     # записали на диск
-    with open("dict.json", "w") as json_output_file:
-        json_output_file.write(json.dumps(dictionary_required, indent=4))
+    write_dict_to_disk(dictionary_required)
     logging.info("вывод нужного словаря")
     print(dictionary_required)
 
-    # готовы таблички
-    logging.info(
-        f"сохраняем отчеты для этих команд :{', '.join(list(aggregated_df.index.get_level_values(0).unique()))}")
-
+    # готовы таблички сохраняем на диск
     save_to_md(df_to_save=aggregated_df, filename="reports.md")
 
 
