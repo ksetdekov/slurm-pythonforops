@@ -10,8 +10,8 @@ class TestTimeHandler(unittest.TestCase):
                               ('Overwhelming', 'Spikes'): 'extend resource', ('Overwhelming', 'Drops'): 'extend resource', ('Overwhelming', 'Stable'): 'extend resource'}
 
     def test_decision(self):
-        for input, result in self.decision_dict.items():
-            self.assertEqual(result, get_decision(*input))
+        for in_parameters_for_testing, result in self.decision_dict.items():
+            self.assertEqual(result, get_decision(*in_parameters_for_testing))
 
     def test_intensity_none(self):
         self.assertEqual(assess_intesity(0), None)
