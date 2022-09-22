@@ -69,7 +69,7 @@ class MetricCollector:
 
     @staticmethod
     def get_time_component_from_str(timestring, time_seconds, time_component):
-        time_multipliers = {'h':3600, 'm':60}
+        time_multipliers = {'h': 3600, 'm': 60}
         h_match = re.search(rf"[-\d]*?(?={time_component})", timestring)
         if h_match is not None:
             value_found = int(h_match[0])
@@ -127,8 +127,8 @@ class PrometheusAgent(MetricCollector):
 
     @MetricCollector.collection_frequency.setter
     def collection_frequency(self, new_value):
-        print(f'Попытка поменять collection frequencey с {self.collection_frequency} на {new_value}. Нельзя устанавливать collection_frequency в этом агенте')
-
+        print(f'Попытка поменять collection frequency с {self.collection_frequency} на {new_value}. Нельзя '
+              f'устанавливать collection_frequency в этом агенте')
 
 
 class CarbonAgent(MetricCollector):
@@ -162,7 +162,7 @@ def main():
     metric_server.get_event_count()
     print(metric_server)
 
-    print("проверка что у всех экзэмляров разных классов работает метод send_events")
+    print("проверка что у всех экземпляров разных классов работает метод send_events")
 
     regular_collector = MetricCollector(**base_settings)
     prometheus_collector = PrometheusAgent(**base_settings)
@@ -179,7 +179,6 @@ def main():
     print(prometheus_collector)
     prometheus_collector.send_frequency = '4h20s'
     print(prometheus_collector)
-
 
 
 if __name__ == '__main__':
