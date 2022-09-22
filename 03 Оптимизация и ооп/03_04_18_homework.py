@@ -29,15 +29,15 @@ import re
 
 
 class MetricCollector:
-    def __init__(self, settings_dict) -> None:
+    def __init__(self, ip_address, server_key, collection_frequency, send_frequency) -> None:
         # Агент должен иметь IP адрес сервера, к которому подключается, 
         # хранить ключ доступа к серверу и 
         # иметь возможность управлять периодом сбора метрик(в секундах) 
         # и периодом отправки событий на сервер сбора событий (в секундах).
-        self.ip_address = settings_dict['ip_address']
-        self.server_key = settings_dict['server_key']
-        self.__collection_frequency = settings_dict['collection_frequency']
-        self.__send_frequency = settings_dict['send_frequency']
+        self.ip_address = ip_address
+        self.server_key = server_key
+        self.__collection_frequency = collection_frequency
+        self.__send_frequency = send_frequency
         self.collect_counter = 0
 
     def __str__(self) -> str:
@@ -48,25 +48,35 @@ class MetricCollector:
 
     @staticmethod
     def process_times(timestring):
-        if isinstance(timestring, int) or isinstance(timestring, float):
+        if isinstance(timestring, (int, float)):
             if timestring >= 0:
                 return timestring
             else:
-                raise ValueError
-        elif len(timestring) <= 0:
-            raise ValueError
+                raise ValueError('Введено отрицательное время')
+        elif len(timestring) == 0:
+            raise ValueError('Время не введено')
         else:
-            time_seconds = 0
-            h_match = re.search(r"[\d]*?(?=h)", timestring)
-            if h_match is not None:
-                time_seconds += int(h_match[0]) * 3600
-            m_match = re.search(r"[\d]*?(?=m)", timestring)
-            if m_match is not None:
-                time_seconds += int(m_match[0]) * 60
-            s_match = re.search(r"[\d]*?(?=s)", timestring)
-            if s_match is not None:
-                time_seconds += int(s_match[0])
+            time_seconds = MetricCollector.convert_string_to_seconds(timestring)
             return time_seconds
+
+    @staticmethod
+    def convert_string_to_seconds(timestring):
+        time_seconds = 0
+        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 'h')
+        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 'm')
+        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 's')
+        return time_seconds
+
+    @staticmethod
+    def get_time_component_from_str(timestring, time_seconds, time_component):
+        time_multipliers = {'h':3600, 'm':60}
+        h_match = re.search(rf"[-\d]*?(?={time_component})", timestring)
+        if h_match is not None:
+            value_found = int(h_match[0])
+            if value_found < 0:
+                raise ValueError(f'Введено время как строка с отрицательным значением {time_component}')
+            time_seconds += int(h_match[0]) * time_multipliers.get(time_component, 1)
+        return time_seconds
 
     @property
     def collection_frequency(self):
@@ -74,7 +84,7 @@ class MetricCollector:
 
     @collection_frequency.setter
     def collection_frequency(self, new_value):
-        self.__collection_frequency = MetricCollector.process_times(new_value)
+        self.__collection_frequency = self.process_times(new_value)
 
     @property
     def send_frequency(self):
@@ -82,7 +92,7 @@ class MetricCollector:
 
     @send_frequency.setter
     def send_frequency(self, new_value):
-        self.__send_frequency = MetricCollector.process_times(new_value)
+        self.__send_frequency = self.process_times(new_value)
 
     def get_events(self):
         # Собрать события: при его использовании должно выводиться сообщение
@@ -93,7 +103,6 @@ class MetricCollector:
     def send_events(self):
         # Отправка событий на сервер сбора метрик: выводится сообщение "события сервера <IP-адрес> собраны, отправлены
         # на сервер сбора метрик. Следующая отправка через <период отправки событий на сервер сбора событий> секунд".
-        self.collect_counter += 1
         print(f"события сервера {self.ip_address} собраны, "
               f"отправлены на сервер сбора метрик. Следующая отправка через {self.__send_frequency} секунд")
 
@@ -110,17 +119,23 @@ class MetricCollector:
 
 
 class PrometheusAgent(MetricCollector):
-    def __init__(self, settings_dict):
-        super().__init__(settings_dict)
-
+    # Агент для Prometheus не имеет дополнений к родительским полям. 
+    # Но не позволяет управлять периодом отправки событий т.к. работает в модели pull.
     def send_events(self):
         self.collect_counter += 1
         print(f"события сервера {self.ip_address} собраны, отправлены по запросу от Prometheus")
 
+    @MetricCollector.collection_frequency.setter
+    def collection_frequency(self, new_value):
+        print(f'Попытка поменять collection frequencey с {self.collection_frequency} на {new_value}. Нельзя устанавливать collection_frequency в этом агенте')
+
+
 
 class CarbonAgent(MetricCollector):
-    def __init__(self, settings_dict):
-        super().__init__(settings_dict)
+    # Агент для Carbon в дополнение к родительским полям позволяет указать адрес сервера Carbon.
+    def __init__(self, ip_address, server_key, collection_frequency, send_frequency, carbon_server=None) -> None:
+        super().__init__(ip_address, server_key, collection_frequency, send_frequency)
+        self.carbon_server = carbon_server
 
     def send_events(self):
         self.collect_counter += 1
@@ -131,7 +146,7 @@ class CarbonAgent(MetricCollector):
 def main():
     base_settings = {'ip_address': '1.1.1.1', 'server_key': 'fjkdsflsdfjdslf', 'collection_frequency': 17,
                      'send_frequency': 11}
-    metric_server = MetricCollector(settings_dict=base_settings)
+    metric_server = MetricCollector(**base_settings)
     print(metric_server)
     metric_server.get_events()
     metric_server.get_events()
@@ -149,12 +164,22 @@ def main():
 
     print("проверка что у всех экзэмляров разных классов работает метод send_events")
 
-    regular_collector = MetricCollector(base_settings)
-    carbon_collector = PrometheusAgent(base_settings)
-    prometheus_collector = CarbonAgent(base_settings)
+    regular_collector = MetricCollector(**base_settings)
+    prometheus_collector = PrometheusAgent(**base_settings)
+    carbon_collector = CarbonAgent(carbon_server='198.168.1.1', **base_settings)
 
     for agent in [regular_collector, carbon_collector, prometheus_collector]:
         agent.send_events()
+
+    print("проверка что у агента для Carbon есть новое свойство")
+    print(carbon_collector.carbon_server)
+
+    print(prometheus_collector)
+    prometheus_collector.collection_frequency = '1m'
+    print(prometheus_collector)
+    prometheus_collector.send_frequency = '4h20s'
+    print(prometheus_collector)
+
 
 
 if __name__ == '__main__':
