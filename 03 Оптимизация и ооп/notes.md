@@ -40,3 +40,19 @@ def name(self):
 @name.setter
 def name(self, new_value):
 ```
+
+### методичка по ООП
+
+<https://docs.google.com/presentation/d/16IVpKZEYGbF6ed3Q7xmt7-Mtw3b5L0AB/edit?usp=sharing&ouid=109722791798581128990&rtpof=true&sd=true>
+
+## магические методы
+
+```python
+__init__(self, []) # конструктор
+__del__ # деструктор
+__enter__
+__exit__
+# это контекстные менеджеры
+```
+
+<https://habr.com/ru/post/186608/> - тут много про логических операторов
