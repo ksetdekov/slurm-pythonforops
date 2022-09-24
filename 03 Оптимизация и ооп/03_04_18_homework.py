@@ -62,9 +62,8 @@ class MetricCollector:
     @staticmethod
     def convert_string_to_seconds(timestring):
         time_seconds = 0
-        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 'h')
-        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 'm')
-        time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, 's')
+        for time_component in "hms":
+            time_seconds = MetricCollector.get_time_component_from_str(timestring, time_seconds, time_component)
         return time_seconds
 
     @staticmethod
