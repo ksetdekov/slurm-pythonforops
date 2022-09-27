@@ -1,5 +1,7 @@
 import json
 import requests
+
+
 def main():
     session = requests.Session()
     base_url = "https://httpbin.org"
@@ -18,7 +20,7 @@ def main():
         "id": 12313,
         "name": "python"
     }
-    
+
     with open("README.md") as text_file:
         files = {
             "text_file": text_file
@@ -43,8 +45,6 @@ def main():
             print(jsonified_response_2)
         except requests.exceptions.ConnectTimeout:
             print("Ресурс недоступен")
-
-
 
 
 if __name__ == '__main__':
