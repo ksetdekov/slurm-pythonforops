@@ -1,4 +1,5 @@
 from os import getenv
+import json
 from requests import Session
 
 
@@ -7,8 +8,13 @@ class Credentials:
     """
 
     def __init__(self) -> None:
-        self.__api_token = getenv("TRELLO_API_TOKEN")
-        self.__api_key = getenv("TRELLO_API_key")
+        with open('04 Подключение по сети/secret_info.json') as f:
+            secrets = json.load(f)
+        self.__api_token = secrets["TRELLO_API_TOKEN"]
+        self.__api_key = secrets["TRELLO_API_key"]
+
+        # self.__api_token = getenv("TRELLO_API_TOKEN")
+        # self.__api_key = getenv("TRELLO_API_key")
 
     def get_creds_as_query_params(self):
         return {
@@ -21,9 +27,9 @@ def get_boards(session: Session, creds: Credentials):
     boards = session.get("https://api.trello.com/1/members/me/boards",
                          params=creds.get_creds_as_query_params()).json()
     return {board["name"]: {
-        "id": board["id"], 
-        "columns": get_board_columns(session, creds, boards["id"])
-        } for board in boards}
+        "id": board["id"],
+        "columns": get_board_columns(session, creds, board["id"])
+    } for board in boards}
 
 
 def get_board_columns(session: Session, creds: Credentials, board_id: str):
