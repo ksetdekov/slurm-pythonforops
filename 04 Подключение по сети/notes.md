@@ -58,3 +58,7 @@
 * Requests - синхронная, обертка urllib и простая
 * HTTPX - синхронно-асинхронная, слжнее
 * Aiohttp - асинхронная. сложнее, но идет вместе с http-сервером
+
+### как с трелло поработать
+
+<https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/>
