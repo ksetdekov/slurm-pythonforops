@@ -1,4 +1,4 @@
-from os import getenv
+# from os import getenv
 import json
 from requests import Session
 
@@ -58,7 +58,7 @@ def main():
             print(f"Колонка {column_name}")
     task_details = {
         "name": input("ввести называние задачи"),
-        "desk": input("ввести описание задачи")
+        "desc": input("ввести описание задачи")
 
     }
     col_name = input("ввести называние колонки")
