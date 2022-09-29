@@ -37,14 +37,15 @@ def get_board_columns(session: Session, creds: Credentials, board_id: str):
         f"https://api.trello.com/1/boards/{board_id}/lists", params=creds.get_creds_as_query_params()).json()
     return {column["name"]: column["id"] for column in columns}
 
-def create_task(session: Session, creds: Credentials, board_id: str):
-    url = "https://api.trello.com/1/cards"
 
-    query = {
-        'key': '23432',
-        'token': 'sdfsdfd',
-        'idList': 'sdfsdf'
-    }
+def create_task(session: Session, creds: Credentials, column_id: str, task_details: dict):
+    params = {**creds.get_creds_as_query_params(),
+              **task_details,
+              "idList": column_id
+              }
+    results = session.post("https://api.trello.com/1/cards", params=params)
+    print(results.status_code)
+    print(results.text)
 
 
 def main():
@@ -55,12 +56,21 @@ def main():
         print(f"Доска {board_name}")
         for column_name in board_info["columns"].keys():
             print(f"Колонка {column_name}")
-    task_name = input("ввести называние задачи")
+    task_details = {
+        "name": input("ввести называние задачи"),
+        "desk": input("ввести описание задачи")
+
+    }
     col_name = input("ввести называние колонки")
-    description = input("ввести описание задачи")
-    print(task_name)
     print(col_name)
-    print(description)
+
+    used_column_id = None
+    for board_name, board_info in boards_dict.items():
+        for column_name, column_id in board_info["columns"].items():
+            if column_name == col_name:
+                used_column_id = column_id
+
+    create_task(trello_sessions, trello_creds, used_column_id, task_details)
 
 
 if __name__ == '__main__':
