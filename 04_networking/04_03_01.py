@@ -1,29 +1,53 @@
-from sys import stdout
+from os import getenv, getcwd
 import paramiko
 
 
-def main():
+def main() -> None:
+    key = paramiko.RSAKey.from_private_key_file("C:\\Users\ksetd\.ssh/id_rsa")
     with paramiko.SSHClient() as ssh_client:
-        ssh_client.load_system_host_keys() # установить политику дефолтную
-        # ssh_client.load_system_host_keys(filename="")
-        # ssh_client.set_missing_host_key_policy(paramiko.WarningPolicy) # кидает предупреждение
-        # ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy) # добавить в список хостов
-
-
+        ssh_client.load_system_host_keys()
+        ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy)
         ssh_client.connect(hostname="localhost", port=2222,
-                           username="service_user", password="q1w2e3")
-
-        # ssh_client.invoke_shell() # это терминал прямо 
+                           username="service_user", pkey=key)
         stdin, stdout, stderr = ssh_client.exec_command("ls -la /")
-        # print(stdout.read().decode("utf-8"))
-        stdin, stdout, stderr = ssh_client.exec_command("echotests")
-        # print(stdout.read()) # будет вечно ждать закрытия потока вывода
-        print(stdout.readline()) # считать только первую строку. это полезно, когда знаем что json - в одну строку целекоам
-        stdin.write("Hello\n")
+        print(stdout.read().decode("utf-8"))
+
+        stdin, stdout, stderr = ssh_client.exec_command("echotest")
+
+        stdin.write("Hello!\n")
+        stdin.flush()
         print(stdout.readline())
-        stdin.write("Hello world\n")
-        stdin.flush() # forcefully uncache and write to stdin
+        stdin.write("Hello world!\n")
+        stdin.flush()
         print(stdout.readline())
+
+        stdin, stdout, stderr = ssh_client.exec_command("task_generator")
+        print(stderr.read())
+        print(stdout.read())
+
+        with ssh_client.open_sftp() as sftp_client:
+            sftp_client.get(remotepath="/usr/bin/task_generator", localpath="./task_generator_2")
+            try:
+                sftp_client.put(localpath="./main.py", remotepath="/main.py")
+            except PermissionError:
+                sftp_client.put(localpath="./main.py", remotepath="/tmp/main.py")
+
+            with sftp_client.open("/tmp/main.py") as main_py_file:
+                print(main_py_file.read().decode())
+
+            try:
+                sftp_client.rename(oldpath="/tmp/main.py", newpath="/tmp/main_old.py")
+            except OSError:
+                sftp_client.remove(path="/tmp/main_old.py")
+                sftp_client.rename(oldpath="/tmp/main.py", newpath="/tmp/main_old.py")
+
+            sftp_client.truncate(path="/tmp/main_old.py", size=0)
+
+            print(sftp_client.getcwd())
+            sftp_client.chdir("/")
+            print(sftp_client.getcwd())
+
+            sftp_client.chmod("/tmp/main_old.py", 777)
 
 
 if __name__ == '__main__':
