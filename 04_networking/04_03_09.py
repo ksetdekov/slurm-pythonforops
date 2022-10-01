@@ -1,5 +1,6 @@
 # from os import getenv
 import json
+
 from requests import Session
 
 
@@ -8,7 +9,7 @@ class Credentials:
     """
 
     def __init__(self) -> None:
-        with open('04_networking/secret_info.json') as f:
+        with open('secret_info.json') as f:
             secrets = json.load(f)
         self.__api_token = secrets["TRELLO_API_TOKEN"]
         self.__api_key = secrets["TRELLO_API_key"]
