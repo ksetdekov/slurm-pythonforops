@@ -1,4 +1,3 @@
-from os import getenv, getcwd
 import paramiko
 
 
@@ -28,26 +27,26 @@ def main() -> None:
         with ssh_client.open_sftp() as sftp_client:
             sftp_client.get(remotepath="/usr/bin/task_generator", localpath="./task_generator_2")
             try:
-                sftp_client.put(localpath="./main.py", remotepath="/main.py")
+                sftp_client.put(localpath="./04_03_01.py", remotepath="/04_03_01.py")
             except PermissionError:
-                sftp_client.put(localpath="./main.py", remotepath="/tmp/main.py")
+                sftp_client.put(localpath="./04_03_01.py", remotepath="/tmp/04_03_01.py")
 
-            with sftp_client.open("/tmp/main.py") as main_py_file:
+            with sftp_client.open("/tmp/04_03_01.py") as main_py_file:
                 print(main_py_file.read().decode())
 
             try:
-                sftp_client.rename(oldpath="/tmp/main.py", newpath="/tmp/main_old.py")
+                sftp_client.rename(oldpath="/tmp/04_03_01.py", newpath="/tmp/04_03_01_old.py")
             except OSError:
-                sftp_client.remove(path="/tmp/main_old.py")
-                sftp_client.rename(oldpath="/tmp/main.py", newpath="/tmp/main_old.py")
+                sftp_client.remove(path="/tmp/04_03_01_old.py")
+                sftp_client.rename(oldpath="/tmp/04_03_01.py", newpath="/tmp/04_03_01_old.py")
 
-            sftp_client.truncate(path="/tmp/main_old.py", size=0)
+            sftp_client.truncate(path="/tmp/04_03_01_old.py", size=0)
 
             print(sftp_client.getcwd())
             sftp_client.chdir("/")
             print(sftp_client.getcwd())
 
-            sftp_client.chmod("/tmp/main_old.py", 777)
+            sftp_client.chmod("/tmp/04_03_01_old.py", 777)
 
 
 if __name__ == '__main__':
