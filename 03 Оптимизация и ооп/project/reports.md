@@ -1,6 +1,6 @@
-# РћС‚С‡РµС‚ РїРѕ СЂРµСЃСѓСЂСЃР°Рј РїРѕ РєРѕРјР°РЅРґР°Рј
+# Отчет по ресурсам по командам
 
-## РљРѕРјР°РЅРґР° drive revolutionary infrastructures
+## Команда drive revolutionary infrastructures
 
 | resource   | metric   |   mean |   mediana | usage_type   | intensity    | decision        |
 |:-----------|:---------|-------:|----------:|:-------------|:-------------|:----------------|
@@ -35,7 +35,7 @@
 | NBX-4230   | NetFlow  | 54.24  |      68.5 | Stable       | High         | normal using    |
 | NBX-4230   | RAM      | 45.405 |      23   | Spikes       | Low          | delete resource |
 
-## РљРѕРјР°РЅРґР° envisioneer rich mindshare
+## Команда envisioneer rich mindshare
 
 | resource   | metric   |   mean |   mediana | usage_type   | intensity   | decision     |
 |:-----------|:---------|-------:|----------:|:-------------|:------------|:-------------|
@@ -70,7 +70,7 @@
 | UDF-415    | NetFlow  | 53.67  |      55   | Stable       | Medium      | normal using |
 | UDF-415    | RAM      | 46.895 |      46   | Stable       | Medium      | normal using |
 
-## РљРѕРјР°РЅРґР° implement open-source bandwidth
+## Команда implement open-source bandwidth
 
 | resource   | metric   |   mean |   mediana | usage_type   | intensity   | decision     |
 |:-----------|:---------|-------:|----------:|:-------------|:------------|:-------------|
@@ -105,7 +105,7 @@
 | TSS6228    | NetFlow  | 49.015 |      49   | Stable       | Medium      | normal using |
 | TSS6228    | RAM      | 48.405 |      47   | Stable       | Medium      | normal using |
 
-## РљРѕРјР°РЅРґР° strategize world-class web services
+## Команда strategize world-class web services
 
 | resource   | metric   |   mean |   mediana | usage_type   | intensity   | decision        |
 |:-----------|:---------|-------:|----------:|:-------------|:------------|:----------------|

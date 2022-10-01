@@ -2,9 +2,11 @@ import json
 import pandas as pd
 import os
 import logging
+import requests
 
 # running
 # $ curl localhost:21122/monitoring/infrastructure/using/summary/1 | python main.py
+URL_TO_ACCESS = "http://localhost:21122/monitoring/infrastructure/using/summary/1"
 TEST_ON_TXT = False
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO)
 if TEST_ON_TXT:
@@ -134,7 +136,7 @@ def save_to_md(df_to_save, filename):
         markdown_results.write("\n")
 
 
-def get_raw_input_data():
+def get_raw_input_data(url):
     if TEST_ON_TXT:
         logging.info("считываем данные из файла")
         logging.info(
@@ -143,8 +145,9 @@ def get_raw_input_data():
             raw_input_string = file.read()
         logging.info("закончили читать файл")
     else:
-        logging.info("получаем информацию с потока input")
-        raw_input_string = input()
+        logging.info("получаем информацию по сети")
+        response = requests.get(url)
+        raw_input_string = response.text
     return raw_input_string
 
 
@@ -169,7 +172,7 @@ def write_dict_to_disk(dictionary_required, dict_location="dict.json"):
 
 
 def main():
-    raw_input_string = get_raw_input_data()
+    raw_input_string = get_raw_input_data(url=URL_TO_ACCESS)
     final_dict = parse_string_to_dict(raw_input_string)
     # получаем из словаря мультииндекс и создаем df из исходных данных
     index_complex = pd.MultiIndex.from_tuples(

@@ -64,3 +64,8 @@
 <https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/>
 
 ## ssh и парамико
+Открывает один транспорт и создает на его основе столько каналов, сколько потребуется, чтобы передать все команды, используя более абстрактный протокол SSH
+
+#### методичка 
+
+<https://drive.google.com/file/d/1htldXA6_7FAEWKQhTHvsI6Z6XFWvzF7l/view?usp=sharing>
