@@ -69,3 +69,19 @@
 #### методичка 
 
 <https://drive.google.com/file/d/1htldXA6_7FAEWKQhTHvsI6Z6XFWvzF7l/view?usp=sharing>
+
+## databases
+### субд
+* mysql-connector-python - sync
+* mariadb - sync
+* psycopg2 - async
+* clickhouse-driver
+
+### key-value store
+* redis - redis client
+* pika - RabbitMQ
+* kafka-python - Kafka
+* confluence-kafka-python - Kafka
+
+### api for systems
+
