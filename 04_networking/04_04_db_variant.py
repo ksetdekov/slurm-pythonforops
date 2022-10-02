@@ -3,12 +3,13 @@ from random import choice
 from os import getenv
 
 import paramiko
-import  psycopg2
+import psycopg2
 from requests import Session
 
 
 class Credentials:
     """ Credentials для доступа к Trello по REST API """
+
     def __init__(self):
         with open('secret_info.json') as f:
             secrets = load(f)
@@ -125,6 +126,7 @@ def get_tasks_from_generator() -> list:
             exit(1)
         return load(stdout)
 
+
 def get_task_from_db(db_creds: dict):
     with psycopg2.connect(**db_creds) as connection_to_db:
         with connection_to_db.cursor() as cursor:
@@ -138,9 +140,9 @@ def get_task_from_db(db_creds: dict):
             records = cursor.fetchall()
             print(records)
             connection_to_db.commit()
-            cursor.execute("INSERT INTO python_test.cards (name, description, due) VALUES (%s, %s, %s)", ['test task', 'test descr', '2021-10-12' ]})
+            cursor.execute("INSERT INTO python_test.cards (name, description, due) VALUES (%s, %s, %s)",
+                           ['test task', 'test descr', '2021-10-12'])
             connection_to_db.commit()
-
 
 
 def get_label_id(board: TrelloBoard, checked_label_name: str):
