@@ -236,6 +236,8 @@ def main():
     credentials = Credentials()
     # print(credentials)
     read_all_tables_from_db(credential=credentials)
+    # я смог только подключиться к базе, которая создается в докер контейнере и она содержит 0 записей
+    # часть задания про получение данных у меня не получилась
     exit(1)
     raw_input_string = get_raw_input_data(url=URL_TO_ACCESS)
     final_dict = parse_string_to_dict(raw_input_string)
